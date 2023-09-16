@@ -1,0 +1,6 @@
+#deployment
+
+replicasCount: 3
+image:
+    repository: image_name
+    tag: image_tag

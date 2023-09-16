@@ -1,0 +1,16 @@
+version: '3'
+services:
+  service_name:
+    container_name: container_name
+    image: image_name
+    ports:
+      - portonhost:portoncontainer
+    volumes:
+      - /path/on/host/:/path/on/container/
+    environment:
+      key: value
+    networks:
+      - network_Name
+networks:
+  network_Name:
+    driver: bridge

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service_name
+spec:
+  type: ClusterIp
+  ports:
+    - port: 80                 #port on the service
+      targetPort: 80           #port on the pods that the service will group them together
+  selector:
+    key: value                 #which pods the service will group them and route the incoming traffic to them

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: myapp-deployment
+  labels:
+    app: myapp-dep
+    
+spec:
+  selector:
+    matchLabels:
+      env: production
+  replicas: 3
+  strategy:
+    type: RollingUpdate   #or Recreate
+  template:
+    metadata:
+      name: pod_name
+      labels:
+        env: production
+    spec:
+      containers:
+        - name: container_name
+          image: image_name
+          volumeMount:
+            - mountPath: "/path/inside/container"
+              name: volume_name
+        -
+      volumes:
+        - name: volume_name
+          persistentVolumeClaim:
+            claimName: pvc_name

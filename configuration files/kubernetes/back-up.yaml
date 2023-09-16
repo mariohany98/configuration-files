@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: my-backup-job
+spec:
+  template:
+    metadata:
+      name: my-backup-job
+    spec:
+      containers:
+      - name: backup-container
+        image: your-backup-image:tag
+        command: ["backup-script.sh"] # Replace with the actual backup command or script
+      restartPolicy: OnFailure   # or Never

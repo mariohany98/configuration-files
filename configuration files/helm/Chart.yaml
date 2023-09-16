@@ -1,0 +1,35 @@
+apiVersion: v2                   
+appVersion: 5.8.1      
+name: my-app          # chart_name
+version: 1.2.0        # chart_version
+type: application     # or library
+description: A Helm chart for deploying My App to Kubernetes
+keywords:
+  - my-app
+  - web
+home: https://github.com/myorg/my-app
+icon: https://example.com/my-app-icon.png
+sources:
+  - https://github.com/myorg/my-app
+maintainers:
+  - name: John Doe
+    email: john@example.com
+    url: https://github.com/johndoe
+  - name: Jane Smith
+    email: jane@example.com
+dependencies:
+  - name: mysql        #chart_name
+    version: 2.0.0     #chart_version
+    repository: https://example.com/charts
+    condition: mysql.enabled,global.mysql.enabled    #state of chart(or disabled)
+    tags:
+      - database
+      - sql
+  - name: redis
+    version: 5.0.0
+    repository: https://example.com/charts
+    alias: redis-primary
+    condition: redis.enabled,global.redis.enabled
+    import-values:
+      - redis.host
+      - redis.port

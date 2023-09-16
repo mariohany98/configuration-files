@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap_name
+data:
+  DATABASE_URL: value
+  #or
+  file_name: |
+  #content of the file

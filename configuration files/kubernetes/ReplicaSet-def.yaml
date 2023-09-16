@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: RS_name
+  labels:
+    env: production
+spec:
+  replicas: 3              #number of pods  
+  selector:                #determine which pod label the RS should monitor and manage
+    matchLabels:
+      app: myapp
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - myapp1
+          - myapp2          
+  template:               #define the pod which will be user by the RS to create replicas
+    metadata:
+      name: pod_name
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: container_name
+          image: image_name

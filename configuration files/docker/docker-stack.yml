@@ -1,0 +1,29 @@
+version: '3'
+services:
+  service_name:
+    container_name: container_name
+    image: image_name
+    deploy:
+      replicas: 4
+      placement:
+        constraints:
+          - node.hostname == node_name
+          - node.role == manager or worker
+      resources:
+        limits:
+          cpus: 0.01
+          memory: 50M
+    ports:
+      - portonhost:portoncontainer
+    volumes:
+      - /path/on/host/:/path/on/container/
+    environment:
+      key: value
+    networks:
+      - network_Name
+networks:
+  network_Name:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24

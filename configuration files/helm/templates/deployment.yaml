@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: {{ .Release.Name }}-dep
+  labels:
+    app: myapp-dep
+    
+spec:
+  selector:
+    matchLabels:
+      env: production
+  replicas: {{ .Values.replicasCount }}
+  strategy:
+    type: RollingUpdate   #or Recreate
+  template:
+    metadata:
+      name: pod_name
+      labels:
+        env: production
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}

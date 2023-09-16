@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service_name
+spec:                              #define the service
+  type: NodePort                   #service type
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30008
+  selector:                        #identify which pods belong to the service
+    env: production
